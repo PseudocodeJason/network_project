@@ -1,4 +1,10 @@
 # network_project
+
+Next step
+- Implement the API
+- Create pages to input the user name and message. Those information is allow to insert to the database
+
+
 data model 
 User Table:
 - user_id (primary key)
