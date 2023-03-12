@@ -1,5 +1,9 @@
 # network_project
 
+Porject:
+Develop a client server Chat application. In this application implement SSL protocol usingpython SSL package/module to ensure the security of the conversation
+
+
 Next step
 - Implement the API
 - Create pages to input the user name and message. Those information is allow to insert to the database
