@@ -1,10 +1,14 @@
+#This PY file - Allows us to render the HTML page with defined Python models passing dynamic Information into them
+
 from django.shortcuts import render
 
 from .models import Chatmessage,User,Response
 
 
+#Index Render 
 def index(request):
     return render(request, "chatbox/base.html")
+
 
 
 def chat_history(request):
@@ -17,6 +21,8 @@ def chat_history(request):
         "chats_list": chats_list
     }
     return render(request, "chatbox/chat_history.html", context)
+
+
 
 def user_list(request):
     users = User.objects.all()
