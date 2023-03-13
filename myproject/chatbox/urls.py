@@ -1,6 +1,10 @@
 from django.urls import path
+#Package to work with routes 
+
 from . import views
 
+
+#ROUTES 
 urlpatterns = [
     path('', views.index),
     path('chat_history/', views.chat_history, name='chat_history'),

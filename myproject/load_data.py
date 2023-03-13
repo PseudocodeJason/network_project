@@ -1,8 +1,13 @@
+#Main function to render Data into application 
 
+#Jonathan - I think this is where the API call is  gonna go. 
 def data():
     from chatbox.models import Chatmessage,User,Response
+  #Data Models imported 
+
     from datetime import datetime
     from django.utils import timezone
+    
 
     # create sample users
     user = User.objects.create(name="Alice")

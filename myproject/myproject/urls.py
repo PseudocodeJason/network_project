@@ -17,7 +17,10 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include, path
 
+
+#These are the routes which are the paths for the ADMIN page to view the database. 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('chatbox.urls'))
+    #The entire Application routes all start with the routes from the ChatBox directory defined 
 ]
