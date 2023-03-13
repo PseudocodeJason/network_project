@@ -1,6 +1,6 @@
 from django.db import models
 
-
+#Creation of class to represent 
 class User(models.Model):
     name = models.CharField(max_length=50,help_text="The user name")
 

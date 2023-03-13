@@ -18,6 +18,8 @@ def chat_history(request):
     }
     return render(request, "chatbox/chat_history.html", context)
 
+
+
 def user_list(request):
     users = User.objects.all()
     users_list = []
