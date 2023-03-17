@@ -20,9 +20,17 @@
       .navbar-brand {
         font-size: 25px;
       }
+      #fH1{
+        align-items: center;
+        align-content: center;
+        text-align: center;
+      }
+      .out{
+        margin-top: 100px;
+      }
     </style>
   </head>
-  <body>
+  <body class="container">
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
           <a class="navbar-brand" href="/">Chatbox</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,19 +55,34 @@
           </div>
         </nav>
         {% block content %}
-        <h1>Welcome to Chatbox!</h1>
+        <div class="out">
+        <div class="mx-auto">
+          <h1 id="fH1">Welcome to Chatbox!</h1>
+
+          <form>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Enter Text</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+          </form>
+        </div>
+        </div>
+
+
         {% endblock %}
 
 
 
 
         
-  <!-- Copyright -->
+  <!-- Footer -->
   <footer class="page-footer font-small blue">
     <div class="footer-copyright text-center py-3">
       <p>Website By: Group 1</p>
     </div>
   </footer>
-  <!-- Copyright -->
-  </body>
-</html>
+  <!-- Footer -->
+  
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa
