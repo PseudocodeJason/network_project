@@ -56,18 +56,47 @@
         </nav>
         {% block content %}
         <div class="out">
-        <div class="mx-auto">
-          <h1 id="fH1">Welcome to Chatbox!</h1>
+          <div class="mx-auto">
+            <h1 id="fH1">Welcome to Chatbox!</h1>
+    
+            <form method="POST" action="{% url 'index' %}">
+              {% csrf_token %}
+             
+              <div class="mb-3">
+             
+                <label for="user_name" class="form-label">User Name</label>
+             
+                <input type="text" class="form-control" id="user_name" name="user_name" required>
+             
+              </div>
 
-          <form>
-            <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">Enter Text</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-          </form>
-        </div>
+
+              <div class="mb-3">
+                <label for="message_text" class="form-label">Enter Text</label>
+                
+
+                <!--FIELDS FOR FORM - ID "message_text" name - "message_text"-->
+                <textarea class="form-control" id="message_text" name="message_text" rows="3" required></textarea>
+
+
+
+              </div>
+              <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+          </div>
         </div>
 
+
+        {% if responses %}
+    <div class="mt-4">
+        <h3>Response:</h3>
+        <ul class="list-unstyled">
+            {% for response in responses %}
+                <li>{{ response.response_text }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
 
         {% endblock %}
 
