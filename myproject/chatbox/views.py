@@ -31,16 +31,15 @@ def index(request):
         openai.api_key = settings.OPENAI_API_KEY
 
         # Call the OpenAI API
-        response = openai.ChatCompletion.create(
-            engine="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": message_text},
-            ],
-            max_tokens=100,
-            n=1,
-            temperature=0.5,
+        # Call the OpenAI API
+        response = openai.Completion.create(
+        engine="text-davinci-002",  # You can replace this with the desired GPT-3 engine
+        prompt=message_text,
+        max_tokens=100,
+        n=1,
+        temperature=0.5,
         )
+
 
         # Save the Response
         response_text = response.choices[0].text.strip()
