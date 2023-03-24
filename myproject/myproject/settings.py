@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'qb428@8@=0c+mg^_lt_w#_%0gb!voh)14pk5lx-5noa!7f^6ox'
 
 
-OPENAI_API_KEY = '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'
+OPENAI_API_KEY = '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'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'chatbox'
+    'chatbox',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
