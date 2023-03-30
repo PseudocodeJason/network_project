@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,12 +25,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'qb428@8@=0c+mg^_lt_w#_%0gb!voh)14pk5lx-5noa!7f^6ox'
 
 
-OPENAI_API_KEY = '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'
+OPENAI_API_KEY = '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'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SSL_CERTIFICATE = os.path.join(BASE_DIR, "localhost.crt")
+SSL_PRIVATE_KEY = os.path.join(BASE_DIR, "localhost.key")
 
 # Application definition
 
@@ -39,8 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'chatbox'
+    'sslserver', 
+    'chatbox',
+    'django_extensions',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
