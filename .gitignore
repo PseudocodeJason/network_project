@@ -1,5 +1,5 @@
 myproject/myproject/settings.py 
-cert.pem
-key.pem 
+localhost.crt 
+localhost.key
 
 
