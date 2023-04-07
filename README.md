@@ -33,6 +33,12 @@ Response Table:
 ![image](https://user-images.githubusercontent.com/32995324/224576951-7cb84b5f-c27a-4569-803f-8e545f0adb5b.png)
 
 
+python manage.py runsslserver --cert ..\certs\server.crt --key ..\certs\server.key this is the new command to run the application with HTTPS
+Self-signed certificates are not trusted by web browsers by default because they are not issued by a trusted certificate authority (CA).
+* 
+While self-signed certificates provide encryption, they lack the validation and trust provided by a certificate from a trusted CA. In a development environment, this is generally not a concern, as the primary goal is to test and develop your application with SSL enabled. **
+
+
 Before runserver
 - myproject\myproject\setting
 - Config your API key to OPENAI_API_KEY = 
