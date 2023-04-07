@@ -31,8 +31,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-SSL_CERTIFICATE = os.path.join(BASE_DIR, "localhost.crt")
-SSL_PRIVATE_KEY = os.path.join(BASE_DIR, "localhost.key")
+SSL_CERTIFICATE_PATH = os.path.join(BASE_DIR, 'certs', 'server.crt')
+SSL_PRIVATE_KEY_PATH = os.path.join(BASE_DIR, 'certs', 'server.key')
+
 
 # Application definition
 
@@ -43,8 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sslserver', 
+
+    'sslserver',
     'chatbox',
+    # SSL SERVER AND CHATBOX ADDED FOR WEB APP TO RECOGNIZE THESE
+
     'django_extensions',
 ]
 
