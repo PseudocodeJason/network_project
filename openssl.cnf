@@ -2,7 +2,7 @@
 CN=localhost
 
 [req]
-distinguished_name = dn
+distinguished_name=dn
 
 [EXT]
 subjectAltName=DNS:localhost
