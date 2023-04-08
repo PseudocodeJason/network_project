@@ -4,7 +4,7 @@
 <h1>Message History</h1>
 <ul class="list-group">
   {% for item in chats_list %}
-  <li class="list-group-item">
+  <li class="list-group-item" id="textbubble-one">
       <span class="text-info">message_text: </span> <span>{{ item.chat.message_text }}</span>
       <br>
       <span class="text-info">message_id: </span><span>{{ item.chat.id }}</span>
