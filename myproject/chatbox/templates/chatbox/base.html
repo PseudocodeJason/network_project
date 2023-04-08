@@ -45,10 +45,15 @@
         background: linear-gradient(243.41deg, #4386EC 1.11%, rgba(96, 64, 222, 0.78) 50.8%, #4386EC 95.58%);
         background-attachment: fixed;
         height: 80vh;
+        font-size: 24px;
+        line-height: 24px;
+        font-weight: 700;
+        
       }
       #nav{
         background: #000080;
         width: 100%;
+        
       }
       #user_name{
         border-radius: 30px;
@@ -70,9 +75,15 @@
       }
       #form{
         width: 50vw;
+        margin-left: 25vw;
       }
       #response{
         margin-left: 25vw;
+        background-color: white;
+        border-radius: 30px;
+        padding: 10px;
+        width: 50vw;
+
       }
       #textbubble-one{
         margin-left: 25vw;
@@ -87,108 +98,181 @@
         text-align: center;
         margin-top: 10px;
       }
+      #logo{
+        width:10 vw;
+      }
+
+      /* Footer Section CSS */
+
+      .footer-light{
+        padding: 30px 30px 40px;
+        border-top-color: rgb(35, 55, 79);
+      }
+      .container-footer{
+        width: 100%;
+        max-width: 940px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .footer-block {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+      .footer-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+      .footer-bottom{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .footer-divider {
+        background-color: rgb(35, 38, 39);
+        width: 100%;
+        height: 1px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+      }
+      .footer-social-block {
+        margin-top: 20px;
+      }
+      .footer-copyright {
+        color: white;
+        font-size: larger;
+        font-weight: 500;
+      }
+      .footer-title {
+        font-size: 18px;
+        line-height: 32px;
+        font-weight: 500;
+      }
+      .footer-link {
+        color: white;
+        margin-top: 20px;
+        text-decoration-color: initial;
+      }
+      #divider{
+        background-color: rgb(35, 55, 79);
+        height: 1px;
+        margin-top: 20px;
+      }
     </style>
   </head>
-  <body class="container">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
-      <a class="navbar-brand" href="/">Chatbox</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/chat_history/"
-              >Message_history<span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/user_list/">user_list</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/response_history/">response_list</a>
-          </li>
+  <body>
+      <nav class="navbar navbar-expand-sm navbar-dark" id="nav">
+        <a class="navbar-brand" href="/">Chatbox</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/chat_history/"
+                >Message history<span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user_list/">User List</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/response_history/">Response List</a>
+            </li>
+          </ul>
+          
+        </div>
+      </nav>
+      {% block content %}
+
+      <div class="out">
+        <div class="mx-auto">
+          <h1 id="fH1">Welcome to Chatbox!</h1>
+
+          <form method="POST" action="{% url 'index' %}" >
+            {% csrf_token %}
+            <div id="form">
+              <div class="mb-3" id="username_input">
+                <label for="user_name" class="form-label">Username</label>
+
+                <input
+                  type="text"
+                  class="form-control"
+                  id="user_name"
+                  name="user_name"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="message_text" class="form-label">Enter Text</label>
+
+                <!--FIELDS FOR FORM - ID "message_text" name - "message_text"-->
+                <textarea
+                  class="form-control"
+                  id="message_text"
+                  name="message_text"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" id="submit-btn">Send</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      {% if responses %}
+      <div class="mt-4" id="response">
+        <h3>Response:</h3>
+        <ul class="list-unstyled">
+          {% for response in responses %}
+          <li>{{ response.response_text }}</li>
+          {% endfor %}
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-            Search
-          </button>
-        </form>
       </div>
-    </nav>
-    {% block content %}
-    <div class="out">
-      <div class="mx-auto">
-        <h1 id="fH1">Welcome to Chatbox!</h1>
-
-        <form method="POST" action="{% url 'index' %}">
-          {% csrf_token %}
-
-          <div class="mb-3">
-            <label for="user_name" class="form-label">User Name</label>
-
-            <input
-              type="text"
-              class="form-control"
-              id="user_name"
-              name="user_name"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="message_text" class="form-label">Enter Text</label>
-
-            <!--FIELDS FOR FORM - ID "message_text" name - "message_text"-->
-            <textarea
-              class="form-control"
-              id="message_text"
-              name="message_text"
-              rows="3"
-              required
-            ></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Send</button>
-        </form>
-      </div>
-    </div>
-
-    {% if responses %}
-    <div class="mt-4">
-      <h3>Response:</h3>
-      <ul class="list-unstyled">
-        {% for response in responses %}
-        <li>{{ response.response_text }}</li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %} {% endblock %}
-
-    <!-- Footer -->
-    <footer class="page-footer font-small blue">
-      <div class="footer-copyright text-center py-3">
-        <p>Website By: Group 1</p>
-      </div>
-
-      <a href="https://github.com/melodyyip/network_project">
-        <i class="fa fa-github" style="font-size: 20px; color: black">
-          GitHub soruce Code
-        </i>
-      </a>
-    </footer>
+      {% endif %} {% endblock %}
+      <div id="divider"></div>
   </body>
+
+  <!-- Footer -->
+  <footer class="page-footer font-small blue" id="footer">
+    <section class="footer-light">
+      <div class="container-footer">
+        <div class="footer-wrapper">
+          <div class="footer-block">
+            <div class="footer-title">Group 1</div>
+            <a href="#" class="footer-link">How it works</a>
+            <a href="https://openai.com/blog/openai-api" class="footer-link ">OpenAI API</a>
+          </div>
+
+          <div class="footer-block ">
+            <div class="footer-title">Quick Link</div>
+            <a href="/chat_history/" class="footer-link ">Message History</a>
+            <a href="/response_history/" class="footer-link ">Response</a>
+            <a href="/user_list/" class="footer-link ">Users</a>
+          </div>
+        </div>
+        <div class="footer-divider "></div>
+        <div class="footer-bottom">
+          <div class="footer-copyright">Website By:&nbsp;Group 1</div>
+          <div class="footer-social-block ">
+            <a href="https://github.com/PseudocodeJason/network_project" class="footer-social-link w-inline-block">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" width="40"></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </footer>
+
 </html>
