@@ -4,7 +4,7 @@
 <h1>User List</h1>
 <ul class="list-group">
   {% for item in users_list %}
-  <li class="list-group-item">
+  <li class="list-group-item" id="textbubble-one">
       <span class="text-info">user_id: </span> <span>{{ item.user.id }}</span>
       <br>
       <span class="text-info">name: </span><span>{{ item.user.name }}</span>
